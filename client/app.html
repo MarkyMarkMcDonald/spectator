@@ -1,0 +1,188 @@
+<head>
+  <title>Spectator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  {{> page}}
+</body>
+
+<template name="page">
+  <div class="container">
+    {{>login}}
+
+    {{#if showCreateGameDialog}}
+      {{> createGameDialog}}
+    {{/if}}
+
+    {{#if currentUser}}
+      <button class="create">Create Game</button>
+    {{/if}}
+
+    {{>sidebar}}
+
+    {{>selectedGame}}
+  </div>
+</template>
+
+<template name="sidebar">
+  <div class="pull-left sidebar">
+    <div class="row">
+      <div class="span12">
+        {{>games}}
+      </div>
+    </div>
+    <div class="row hover-card-display">
+      <div class="span12">
+        {{>hoveredCard}}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="hoveredCard">
+  {{#with card}}
+    <div class="card">
+      <img src="{{image}}" alt="{{name}}"/>
+    </div>
+  {{/with}}
+</template>
+
+<template name="games">
+  <h2>Games</h2>
+  <table>
+    <tbody>
+    <tr>
+      <th>Title</th>
+      <th>Player 1</th>
+      <th>Player 2</th>
+    </tr>
+    {{#each games}}
+    <tr>
+      {{>gameRow}}
+    </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</template>
+
+<template name="selectedGame">
+  <div class="pull-left selected-game">
+    {{#with game}}
+    <h4>{{title}}</h4>
+    <p>{{description}}</p>
+    <div class="row">
+      <div class="span2">
+        {{player1.name}}
+      </div>
+      <div class="span2 offset2">
+        {{player2.name}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="span3">
+        {{#with player1}}
+          {{>decklist}}
+        {{/with}}
+      </div>
+      <div class="span3 offset1">
+        {{#with player2}}
+          {{>decklist}}
+        {{/with}}
+      </div>
+    </div>
+
+    <div class="board-state">
+      {{#with player1}}
+        {{>zones}}
+      {{/with}}
+
+      {{#with player2}}
+        {{>zones}}
+      {{/with}}
+    </div>
+
+    {{/with}}
+  </div>
+</template>
+
+<template name="decklist">
+  <ul>
+  {{#each decklist}}
+    <li>{{this.quantity}} <a class="card" name="{{this.name}}">{{this.name}}</a></li>
+  {{/each}}
+  </ul>
+</template>
+
+<template name="gameRow">
+  <td><a class="select" href="#">{{title}}</a></td>
+  <td>{{player1.name}}</td>
+  <td>{{player2.name}}</td>
+</template>
+
+<template name="login">
+  <div class="row">
+    <div class="span10 offset1">
+      <div class="header row">
+        <div class="span5">
+          <h3 style="margin-bottom: 0px">Spectate MTG records</h3>
+        </div>
+        <div class="span5">
+          <div style="float: right">
+            {{loginButtons align="right"}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="createGameDialog">
+  <div class="modal">
+    <div class="modal-header">
+      <button type="button" class="close cancel">&times;</button>
+      <h3>Add Game</h3>
+    </div>
+
+    <div class="modal-body">
+      {{#if error}}
+        <div class="alert alert-error">{{error}}</div>
+      {{/if}}
+
+      <label>Title</label>
+      <input class="title span5" type="text"/>
+
+      <label>Description</label>
+      <textarea class="description span5"></textarea>
+
+      <label class="checkbox">
+        <input class="private" type="checkbox"/>
+        Private Game
+      </label>
+
+      <div class="row">
+        <div class="pull-left player1 span5">
+          <label>Player 1 Name:</label>
+          <input class="name" type="text"/>
+          <label>Decklist:</label>
+          <textarea class="decklist" cols="30" rows="10"></textarea>
+        </div>
+        <div class="pull-left player2 span5">
+          <label>Player 2 Name:</label>
+          <input class="name" type="text"/>
+          <label>Decklist:</label>
+          <textarea class="decklist" cols="30" rows="10"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <a class="btn cancel" href="#">Cancel</a>
+      <a class="btn btn-primary save" href="#">Add Game</a>
+    </div>
+  </div>
+</template>
+
+<template name="zones">
+
+</template>
