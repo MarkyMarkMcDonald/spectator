@@ -46,10 +46,11 @@ var decklistFromString = function(decklist) {
   var lines = decklist.split('\n');
   var cards = [];
   lines.forEach(function(line){
-    var lineInfo = line.split(' ');
+    var name = line.slice(2);
+    var quantity = line[0];
     cards.push({
-      quantity: lineInfo[0],
-      name: lineInfo[1]
+      quantity: quantity,
+      name: name
     })
   });
   return cards;
@@ -84,8 +85,7 @@ Meteor.methods({
       exile: [],
       play: []
     };
-    console.log(decklistFromString(options.decklist1));
-    console.log(decklistFromString(options.decklist2));
+
     var player1 = {
       name: options.player1,
       decklist: decklistFromString(options.decklist1),

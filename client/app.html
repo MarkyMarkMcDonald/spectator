@@ -4,7 +4,7 @@
 </head>
 
 <body>
-  {{> page}}
+{{> page}}
 </body>
 
 <template name="page">
@@ -12,11 +12,7 @@
     {{>login}}
 
     {{#if showCreateGameDialog}}
-      {{> createGameDialog}}
-    {{/if}}
-
-    {{#if currentUser}}
-      <button class="create">Create Game</button>
+    {{> createGameDialog}}
     {{/if}}
 
     {{>sidebar}}
@@ -42,14 +38,23 @@
 
 <template name="hoveredCard">
   {{#with card}}
-    <div class="card">
-      <img src="{{image}}" alt="{{name}}"/>
-    </div>
+  <div class="card">
+    <img src="{{image}}" alt="{{name}}"/>
+  </div>
   {{/with}}
 </template>
 
 <template name="games">
   <h2>Games</h2>
+
+  <div class="row">
+    <div class="span12">
+      {{#if currentUser}}
+      <button class="create">Create Game</button>
+      {{/if}}
+    </div>
+  </div>
+
   <table>
     <tbody>
     <tr>
@@ -82,23 +87,23 @@
     <div class="row">
       <div class="span3">
         {{#with player1}}
-          {{>decklist}}
+        {{>decklist}}
         {{/with}}
       </div>
       <div class="span3 offset1">
         {{#with player2}}
-          {{>decklist}}
+        {{>decklist}}
         {{/with}}
       </div>
     </div>
 
     <div class="board-state">
       {{#with player1}}
-        {{>zones}}
+      {{>zones}}
       {{/with}}
 
       {{#with player2}}
-        {{>zones}}
+      {{>zones}}
       {{/with}}
     </div>
 
@@ -108,9 +113,9 @@
 
 <template name="decklist">
   <ul>
-  {{#each decklist}}
+    {{#each decklist}}
     <li>{{this.quantity}} <a class="card" name="{{this.name}}">{{this.name}}</a></li>
-  {{/each}}
+    {{/each}}
   </ul>
 </template>
 
@@ -146,7 +151,7 @@
 
     <div class="modal-body">
       {{#if error}}
-        <div class="alert alert-error">{{error}}</div>
+      <div class="alert alert-error">{{error}}</div>
       {{/if}}
 
       <label>Title</label>
@@ -184,5 +189,39 @@
 </template>
 
 <template name="zones">
+  {{#with hand}}
+  <div class="hand zone">
+    {{>zone}}
+  </div>
+  {{/with}}
 
+  {{#with play}}
+  <div class="play zone">
+    {{>zone}}
+  </div>
+  {{/with}}
+
+  {{#with graveyard}}
+  <div class="graveyard zone">
+    {{>zone}}
+  </div>
+  {{/with}}
+
+  {{#with exile}}
+  <div class="exile zone">
+    {{>zone}}
+  </div>
+  {{/with}}
+</template>
+
+<template name="zone">
+  {{#each this}}
+    <div class="card {{color}}">
+      <div class="header">
+        <span class="title">{{title}}</span>
+        <span class="type">{{type}}</span>
+        <span class="cost">{{cost}}</span>
+      </div>
+    </div>
+  {{/each}}
 </template>

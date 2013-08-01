@@ -5,28 +5,28 @@ Meteor.startup(function(){
 
 });
 
-// Create Game Dialog
-
 var openCreateGameDialog = function(){
   Session.set("createError",null);
   Session.set("showCreateGameDialog", true);
 };
 
+Template.games.events({
+  'click .create': openCreateGameDialog
+});
+
 var showCard = function(e){
   var name = $(e.target).attr('name');
-  Session.set("hoveredCard", name);
+  if (name) {
+    Session.set("hoveredCard", name);
+  }
 };
 
 Template.hoveredCard.card = function() {
-  var name = Session.get("hoveredCard");
-  var card = Cards.findOne({name: name});
-  console.log(card);
-  return card;
+  return Cards.findOne({name: Session.get("hoveredCard")});
 };
 
 Template.page.events({
-  'click .create': openCreateGameDialog,
-  'mouseover .card': showCard
+  'mouseenter .card': showCard
 });
 
 Template.page.showCreateGameDialog = function() {
@@ -45,8 +45,6 @@ Template.gameRow.events({
 
 Template.selectedGame.game = function(){
   var selectedGame_id = Session.get("selectedGame_id");
-  console.log(selectedGame_id);
-
   return Games.findOne({_id: selectedGame_id});
 };
 
@@ -59,8 +57,7 @@ Template.createGameDialog.events({
     var player1Decklist = template.find('.player1 .decklist').value;
     var player2 = template.find('.player2 .name').value;
     var player2Decklist = template.find('.player2 .decklist').value;
-    console.log(player1Decklist);
-    console.log(player2Decklist);
+
     Meteor.call('createGame', {
       title: title,
       description: description,
