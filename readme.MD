@@ -1,4 +1,4 @@
-Heyooooo!
+### Heyooooo! ###
 
 This project has two users
 1. Spectators of Trading Card Games trying to keep track of the state of the game in an easy and fast way.
