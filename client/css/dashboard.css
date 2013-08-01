@@ -1,3 +1,4 @@
 body .sidebar { width: 250px; margin: 15px; }
 body .sidebar .hover-card-display img { width: 234px; height: 334px; }
 body .selected-game { width: 680px; }
+body .selected-game .zones .zone { width: 200px; }

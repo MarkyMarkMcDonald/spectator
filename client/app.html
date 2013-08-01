@@ -99,11 +99,28 @@
 
     <div class="board-state">
       {{#with player1}}
-      {{>zones}}
+      <div class="row">
+        <div class="span12">
+          {{name}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12">
+          {{>zones}}
+        </div>
+      </div>
       {{/with}}
-
       {{#with player2}}
-      {{>zones}}
+      <div class="row">
+        <div class="span12">
+          {{>zones}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12">
+          {{name}}
+        </div>
+      </div>
       {{/with}}
     </div>
 
@@ -189,39 +206,22 @@
 </template>
 
 <template name="zones">
-  {{#with hand}}
-  <div class="hand zone">
+  <ul class="zones">
+  {{#each zones}}
     {{>zone}}
-  </div>
-  {{/with}}
-
-  {{#with play}}
-  <div class="play zone">
-    {{>zone}}
-  </div>
-  {{/with}}
-
-  {{#with graveyard}}
-  <div class="graveyard zone">
-    {{>zone}}
-  </div>
-  {{/with}}
-
-  {{#with exile}}
-  <div class="exile zone">
-    {{>zone}}
-  </div>
-  {{/with}}
+  {{/each}}
+  </ul>
 </template>
 
 <template name="zone">
-  {{#each this}}
-    <div class="card {{color}}">
-      <div class="header">
-        <span class="title">{{title}}</span>
-        <span class="type">{{type}}</span>
-        <span class="cost">{{cost}}</span>
-      </div>
-    </div>
-  {{/each}}
+  <li class="zone {{name}} pull-left">
+    <span class="type">{{name}}</span>
+    <ul class="cards">
+    {{#each cards}}
+      <li class="card {{color}}">
+        <span class="title pull-left">{{name}} - </span><span class="type pull-left">{{type}}</span> <span class="cost pull-right">{{cost}}</span>
+      </li>
+    {{/each}}
+    </ul>
+  </li>
 </template>
