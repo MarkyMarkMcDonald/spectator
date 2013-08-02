@@ -1,0 +1,32 @@
+<template name="games">
+  <h2>Games</h2>
+
+  <div class="row">
+    <div class="span12">
+      {{#if currentUser}}
+      <button class="create">Create Game</button>
+      {{/if}}
+    </div>
+  </div>
+
+  <table>
+    <tbody>
+    <tr>
+      <th>Title</th>
+      <th>Player 1</th>
+      <th>Player 2</th>
+    </tr>
+    {{#each games}}
+    <tr>
+      {{>gameRow}}
+    </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</template>
+
+<template name="gameRow">
+  <td><a class="select" href="#">{{title}}</a></td>
+  <td>{{player1.name}}</td>
+  <td>{{player2.name}}</td>
+</template>

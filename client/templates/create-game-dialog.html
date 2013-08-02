@@ -1,0 +1,45 @@
+<template name="createGameDialog">
+  <div class="modal">
+    <div class="modal-header">
+      <button type="button" class="close cancel">&times;</button>
+      <h3>Add Game</h3>
+    </div>
+
+    <div class="modal-body">
+      {{#if error}}
+      <div class="alert alert-error">{{error}}</div>
+      {{/if}}
+
+      <label>Title</label>
+      <input class="title span5" type="text"/>
+
+      <label>Description</label>
+      <textarea class="description span5"></textarea>
+
+      <label class="checkbox">
+        <input class="private" type="checkbox"/>
+        Private Game
+      </label>
+
+      <div class="row">
+        <div class="pull-left player1 span5">
+          <label>Player 1 Name:</label>
+          <input class="name" type="text"/>
+          <label>Decklist:</label>
+          <textarea class="decklist" cols="30" rows="10"></textarea>
+        </div>
+        <div class="pull-left player2 span5">
+          <label>Player 2 Name:</label>
+          <input class="name" type="text"/>
+          <label>Decklist:</label>
+          <textarea class="decklist" cols="30" rows="10"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <a class="btn cancel" href="#">Cancel</a>
+      <a class="btn btn-primary save" href="#">Add Game</a>
+    </div>
+  </div>
+</template>

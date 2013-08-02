@@ -1,0 +1,45 @@
+<head>
+  <title>Spectator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+{{> page}}
+</body>
+
+<template name="page">
+  <div class="container">
+    {{>login}}
+
+    {{#if showCreateGameDialog}}
+    {{> createGameDialog}}
+    {{/if}}
+
+    {{>sidebar}}
+
+    {{>selectedGame}}
+  </div>
+</template>
+
+<template name="sidebar">
+  <div class="pull-left sidebar">
+    <div class="row">
+      <div class="span12">
+        {{>games}}
+      </div>
+    </div>
+    <div class="row hover-card-display">
+      <div class="span12">
+        {{>hoveredCard}}
+      </div>
+    </div>
+  </div>
+</template>
+
+
+
+
+
+
+
+

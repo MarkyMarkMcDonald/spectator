@@ -3,3 +3,7 @@ body .sidebar .hover-card-display img { width: 234px; height: 334px; }
 body .selected-game { width: 680px; }
 body .selected-game ul { list-style: none; }
 body .selected-game .zones .zone { width: 200px; }
+body .selected-game .zones .zone.graveyard { background-color: lightcoral; }
+body .selected-game .zones .zone.hand { background-color: lightblue; }
+body .selected-game .zones .zone.play { background-color: lightgrey; }
+body .selected-game .zones .zone.exile { background-color: lightgreen; }

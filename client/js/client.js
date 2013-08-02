@@ -1,10 +1,6 @@
 Meteor.subscribe("games");
 Meteor.subscribe("cards");
 
-Meteor.startup(function(){
-
-});
-
 var openCreateGameDialog = function(){
   Session.set("createError",null);
   Session.set("showCreateGameDialog", true);
