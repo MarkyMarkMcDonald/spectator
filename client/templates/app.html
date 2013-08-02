@@ -12,12 +12,16 @@
     {{>login}}
 
     {{#if showCreateGameDialog}}
-    {{> createGameDialog}}
+      {{> createGameDialog}}
     {{/if}}
 
-    {{>sidebar}}
+    {{#if showingSidebar}}
+      {{>sidebar}}
+    {{/if}}
 
-    {{>selectedGame}}
+    {{#if viewingGame}}
+      {{>selectedGame}}
+    {{/if}}
   </div>
 </template>
 
@@ -26,11 +30,6 @@
     <div class="row">
       <div class="span12">
         {{>games}}
-      </div>
-    </div>
-    <div class="row hover-card-display">
-      <div class="span12">
-        {{>hoveredCard}}
       </div>
     </div>
   </div>

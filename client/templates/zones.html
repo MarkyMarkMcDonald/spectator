@@ -1,19 +1,19 @@
 <template name="zones">
-  <ul class="zones">
+  <div class="zones">
     {{#each zones}}
       {{>zone}}
     {{/each}}
-  </ul>
+  </div>
 </template>
 
 <template name="zone">
-  <li class="zone {{name}} pull-left">
-    <ul class="cards">
+  <div class="zone {{name}} pull-left">
+    <div class="cards">
       {{#each cards}}
-      <li class="card {{color}}">
-        <span class="title pull-left">{{name}} - </span><span class="type pull-left">{{type}}</span> <span class="cost pull-right">{{cost}}</span>
-      </li>
+      <div class="card {{color}} pull-left">
+        <span class="name pull-left">{{name}}</span>
+      </div>
       {{/each}}
-    </ul>
-  </li>
+    </div>
+  </div>
 </template>

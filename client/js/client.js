@@ -39,10 +39,24 @@ Template.gameRow.events({
   }
 });
 
+Template.page.viewingGame = function(){
+  return Session.get("selectedGame_id");
+};
+
+Template.page.showingSidebar = function(){
+  return !Session.get("selectedGame_id");
+};
+
 Template.selectedGame.game = function(){
   var selectedGame_id = Session.get("selectedGame_id");
-  return Games.findOne({_id: selectedGame_id});
+  return selectedGame_id && Games.findOne({_id: selectedGame_id});
 };
+
+Template.selectedGame.events({
+  'click button.home': function(){
+    Session.set("selectedGame_id", null);
+  }
+});
 
 Template.createGameDialog.events({
   'click .save': function(event, template) {

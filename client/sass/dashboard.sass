@@ -10,22 +10,46 @@ body
         height: 334px
 
   .selected-game
-    width: 960px - 250px - (15px * 2)
-
+    width: 960px
+    clear: both
+    margin: 0 auto
     ul
       list-style: none
 
+    .player1, .player2
+      width: 200px
+
+    .hovered-card
+      margin-left: 140px
+      width: 200px
+      height: 280px
+      img
+        width: 200px
+        height: 280px
+
+    .board-state
+      width: 960px
+      clear: both
+
     .zones
       .zone
-        width: 200px
+        .card
+          width: 44px
+          height: 60px
+          border: 1px solid black
 
-        &.graveyard
-          background-color: lightcoral
         &.hand
           background-color: lightblue
+          height: 100px
+          width: 960px
+        &.stack
+          background-color: darkred
+          height: 250px
+          width: 100px
+          clear: both
         &.play
           background-color: lightgray
-        &.exile
-          background-color: lightgreen
+          height: 250px
+          width: 860px
 
 

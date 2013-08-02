@@ -83,6 +83,9 @@ Meteor.methods({
         cards: [],
         name: 'hand'
       },{
+      cards: [],
+      name: 'stack'
+      },{
         cards: [],
         name: 'play'
       }, {

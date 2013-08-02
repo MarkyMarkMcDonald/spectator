@@ -1,60 +1,39 @@
 <template name="selectedGame">
-  <div class="pull-left selected-game">
+  <button class="home">Back</button>
+  <div class="selected-game">
     {{#with game}}
-    <h4>{{title}}</h4>
-    <p>{{description}}</p>
-    <div class="row">
-      <div class="span2">
-        {{player1.name}}
-      </div>
-      <div class="span2 offset2">
-        {{player2.name}}
-      </div>
-    </div>
-    <div class="row">
-      <div class="span3">
-        {{#with player1}}
-        {{>decklist}}
-        {{/with}}
-      </div>
-      <div class="span3 offset1">
-        {{#with player2}}
-        {{>decklist}}
-        {{/with}}
-      </div>
+    <div class="player1 pull-left">
+      {{#with player1}}
+      {{name}}
+      {{>decklist}}
+      {{/with}}
     </div>
 
-    <div class="board-state">
-      {{#with player1}}
-      <div class="row">
-        <div class="span12">
-          {{name}}
-        </div>
-      </div>
-      <div class="row">
-        <div class="span12">
-          {{>zones}}
-        </div>
-      </div>
-      {{/with}}
+    <div class="pull-left hovered-card">
+      {{> hoveredCard}}
+    </div>
+
+    <div class="player2 pull-right">
       {{#with player2}}
-      <div class="row">
-        <div class="span12">
-          {{>zones}}
-        </div>
-      </div>
-      <div class="row">
-        <div class="span12">
-          {{name}}
-        </div>
-      </div>
+      {{name}}
+      {{>decklist}}
       {{/with}}
     </div>
+
+    {{>boardstate}}
 
     {{/with}}
   </div>
 </template>
 
+<template name="boardstate">
+  <div class="board-state pull-left">
+    {{#with player1}}
+      {{>zones}}
+    {{/with}}
+  </div>
+
+</template>
 
 <template name="decklist">
   <ul>
