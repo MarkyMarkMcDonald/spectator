@@ -1,8 +1,11 @@
 ### Heyooooo! ###
 
-This project has two users
-1. Spectators of Trading Card Games trying to keep track of the state of the game in an easy and fast way.
+##### Dependencies #####
+This project uses the [meteor](http://www.meteor.com/) framework.
 
-2. External viewers that want to be able to gain more information about the current game state.
+You'll need to install it (curl https://install.meteor.com | sh) before starting a local server with "meteor run"
 
-3. (I know, I know, I'm cheating here) Users interested in traversing replays of past games.
+## Goal ##
+It's hard for newer MTG players to follow along a stream or video of a game.
+I aim to create a platform that gives spectators an easy way to follow along with the game, and on-site officials an intuitive
+and efficient way to record the board state.

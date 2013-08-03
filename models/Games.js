@@ -1,11 +1,3 @@
-///////////////////////////////////////////////////////////////////////////////
-// Playing Fields
-//
-// Each playing field is represented by a document in the Games collection:
-//  owner: user id
-//  title, description: String
-//  public: Boolean
-//  cards: Array of objects like {name: 'Searing Spear', cost: '1R', power: null, toughness: null, tapped: null}
 Games = new Meteor.Collection("games");
 
 Games.allow({
