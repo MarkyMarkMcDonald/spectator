@@ -79,23 +79,13 @@ Meteor.methods({
       throw new Meteor.Error(403, "You must be logged in");
     }
 
-    var defaultZones = [{
-        cards: [],
-        name: 'hand'
-      },{
-      cards: [],
-      name: 'stack'
-      },{
-        cards: [],
-        name: 'play'
-      }, {
-        cards: [],
-        name: 'graveyard'
-      }, {
-        cards: [],
-        name: 'exile'
-      }
-    ];
+    var defaultZones = {
+      hand: {cards: [], name: 'hand'}, // optimize later
+      stack: {cards: [], name: 'stack'},
+      play: {cards:[], name: 'play'},
+      graveyard: {cards:[], name: 'graveyard'},
+      exile: {cards:[], name: 'exile'}
+    };
 
     var player1 = {
       name: options.player1,
@@ -119,3 +109,4 @@ Meteor.methods({
     })
   }
 });
+

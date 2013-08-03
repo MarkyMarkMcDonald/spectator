@@ -1,21 +1,16 @@
-Meteor.startup(function(){
-//  if (Cards.find().count == 0) {
-//    var cards = [{
-//      name: 'Searing Spear',
-//      cost: '1R',
-//      text: 'Searing Spear deals 3 damage to target creature or player.',
-//      type: 'instant',
-//      image: 'http://magiccards.info/scans/en/m13/147.jpg'
-//    }, {
-//      name: 'Mountain',
-//      cost: '',
-//      text: '',
-//      type: 'land',
-//      typeText: 'Basic Land - Mountain',
-//      image: 'http://magiccards.info/scans/en/m14/242.jpg'
-//    }];
-//    cards.forEach(function(card){
-//      Cards.insert(card);
-//    })
-//  }
+Meteor.Router.add('/card/:name', 'GET', function(name) {
+  var card = cards[name];
+  var cardNumber = 0;
+  for(var key in card.sets) {
+    var obj = card.sets[key];
+    for (var prop in obj) {
+      cardNumber = prop;
+      break;
+    }
+    break;
+  }
+  var cardNumber = card.sets[Object.keys(card.sets)[0]];
+  card.image = "http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=" + cardNumber;
+  card.name = card["name"];
+  return JSON.stringify(card);
 });

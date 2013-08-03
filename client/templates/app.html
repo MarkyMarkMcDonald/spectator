@@ -4,24 +4,14 @@
 </head>
 
 <body>
-{{> page}}
+  {{renderPage}}
 </body>
 
-<template name="page">
+<template name="home">
   <div class="container">
     {{>login}}
 
-    {{#if showCreateGameDialog}}
-      {{> createGameDialog}}
-    {{/if}}
-
-    {{#if showingSidebar}}
-      {{>sidebar}}
-    {{/if}}
-
-    {{#if viewingGame}}
-      {{>selectedGame}}
-    {{/if}}
+    {{>sidebar}}
   </div>
 </template>
 

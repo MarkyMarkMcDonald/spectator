@@ -1,51 +1,53 @@
 Meteor.subscribe("games");
 Meteor.subscribe("cards");
 
-var openCreateGameDialog = function(){
-  Session.set("createError",null);
-  Session.set("showCreateGameDialog", true);
-};
+
+Meteor.Router.add({
+  '/': 'home',
+  '/games/new': 'createGameDialog',
+  '/games/:id': function(id){
+    Session.set('selectedGame_id', id);
+    return 'selectedGame';
+  }
+});
+
+Meteor.Router.filters({
+  requireLogin: function(page) {
+    if (this.userId) {
+      return page;
+    } else {
+      return 'home'
+    }
+  }
+});
+
+Meteor.Router.filter('requireLogin', {only: 'createGame'});
 
 Template.games.events({
-  'click .create': openCreateGameDialog
+  'click .create': function(){
+    Meteor.Router.to('/games/new');
+  }
 });
+
+Session.setDefault('hovered-card', {});
 
 var showCard = function(e){
   var name = $(e.target).attr('name');
-  if (name) {
-    Session.set("hoveredCard", name);
-  }
+  Meteor.http.get('/card/' + name, {}, function(error,data){
+    var json = JSON.parse(data.content);
+    Session.set('hovered-card', json);
+  });
 };
 
 Template.hoveredCard.card = function() {
-  return Cards.findOne({name: Session.get("hoveredCard")});
-};
+  return Session.get('hovered-card');
 
-Template.page.events({
-  'mouseenter .card': showCard
-});
-
-Template.page.showCreateGameDialog = function() {
-  return Session.get("showCreateGameDialog");
 };
 
 Template.games.games = function() {
   return Games.find({}, {sort: {name: 1}})
 };
 
-Template.gameRow.events({
-  'click .select': function(event, template){
-    Session.set("selectedGame_id",template.data._id);
-  }
-});
-
-Template.page.viewingGame = function(){
-  return Session.get("selectedGame_id");
-};
-
-Template.page.showingSidebar = function(){
-  return !Session.get("selectedGame_id");
-};
 
 Template.selectedGame.game = function(){
   var selectedGame_id = Session.get("selectedGame_id");
@@ -53,39 +55,9 @@ Template.selectedGame.game = function(){
 };
 
 Template.selectedGame.events({
-  'click button.home': function(){
-    Session.set("selectedGame_id", null);
-  }
-});
-
-Template.createGameDialog.events({
-  'click .save': function(event, template) {
-    var title = template.find(".title").value;
-    var description = template.find(".description").value;
-    var public = ! template.find(".private").checked;
-    var player1 = template.find('.player1 .name').value;
-    var player1Decklist = template.find('.player1 .decklist').value;
-    var player2 = template.find('.player2 .name').value;
-    var player2Decklist = template.find('.player2 .decklist').value;
-
-    Meteor.call('createGame', {
-      title: title,
-      description: description,
-      public: public,
-      player1: player1,
-      player2: player2,
-      decklist1: player1Decklist,
-      decklist2: player2Decklist
-
-    }, function (error, game) {
-      if (! error) {
-        Session.set("selectedGame", game);
-      }
-    });
-    Session.set("showCreateGameDialog", false);
+  'click .home': function(){
+    Meteor.Router.to('/');
   },
-
-  'click .cancel': function() {
-    Session.set("showCreateGameDialog", false);
-  }
+  'mouseenter .card': showCard
 });
+

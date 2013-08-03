@@ -4,23 +4,28 @@ body
     width: 250px
     margin: 15px
 
-    .hover-card-display
-      img
-        width: 234px
-        height: 334px
-
   .selected-game
     width: 960px
-    clear: both
     margin: 0 auto
+
+    .title
+      margin: 0 auto
+      text-align: center
+
     ul
       list-style: none
 
-    .player1, .player2
-      width: 200px
+    .decklists
+      .player1, .player2
+        width: 200px
+
+    .horizontal-divider
+      clear: both
+      width: 100%
+      background-color: black
+      height: 1px
 
     .hovered-card
-      margin-left: 140px
       width: 200px
       height: 280px
       img
@@ -28,8 +33,7 @@ body
         height: 280px
 
     .board-state
-      width: 960px
-      clear: both
+      width: 760px
 
     .zones
       .zone
@@ -41,15 +45,15 @@ body
         &.hand
           background-color: lightblue
           height: 100px
-          width: 960px
+          width: 760px
         &.stack
           background-color: darkred
           height: 250px
           width: 100px
-          clear: both
+
         &.play
           background-color: lightgray
           height: 250px
-          width: 860px
+          width: 660px
 
 

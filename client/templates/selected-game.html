@@ -2,37 +2,57 @@
   <button class="home">Back</button>
   <div class="selected-game">
     {{#with game}}
-    <div class="player1 pull-left">
-      {{#with player1}}
-      {{name}}
-      {{>decklist}}
-      {{/with}}
-    </div>
+    <h3 class="title">{{title}}</h3>
+    <div class="decklists clearfix">
+      <div class="player1 pull-left">
+        {{#with player1}}
+        {{name}}
+        {{>decklist}}
+        {{/with}}
+      </div>
 
-    <div class="pull-left hovered-card">
-      {{> hoveredCard}}
-    </div>
-
-    <div class="player2 pull-right">
-      {{#with player2}}
-      {{name}}
-      {{>decklist}}
-      {{/with}}
+      <div class="player2 pull-right">
+        {{#with player2}}
+        {{name}}
+        {{>decklist}}
+        {{/with}}
+      </div>
     </div>
 
     {{>boardstate}}
 
+    <div class="hovered-card pull-right">
+      {{> hoveredCard}}
+    </div>
+
+
+  </div>
     {{/with}}
   </div>
 </template>
 
 <template name="boardstate">
   <div class="board-state pull-left">
-    {{#with player1}}
-      {{>zones}}
+    {{#with player1.zones}}
+    <div class="player1 zones">
+      {{>zone hand}}
+
+      {{>zone play}}
+
+      {{>zone stack}}
+    </div>
+    {{/with}}
+    <div class="horizontal-divider"></div>
+    {{#with player2.zones}}
+    <div class="player2 zones">
+      {{>zone play}}
+
+      {{>zone stack}}
+
+      {{>zone hand}}
+    </div>
     {{/with}}
   </div>
-
 </template>
 
 <template name="decklist">
