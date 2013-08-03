@@ -5,8 +5,8 @@ Games.allow({
   insert: function (userId, playingField) {
     return false; // no cowboy inserts -- use createGame method
   },
-  update: function (userId, playingField, fields, modifier) {
-    if (userId !== playingField.owner)
+  update: function (userId, game, fields, modifier) {
+    if (userId !== game.owner)
       return false; // not the owner
 
     var allowed = ["title", "description"];
