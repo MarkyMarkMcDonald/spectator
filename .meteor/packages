@@ -6,11 +6,10 @@
 preserve-inputs
 accounts-ui
 accounts-password
-bootstrap
 email
 accounts-facebook
 accounts-twitter
 audit-argument-checks
-autopublish
 insecure
 http
+bootstrap

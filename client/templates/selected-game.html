@@ -3,21 +3,8 @@
   <div class="selected-game">
     {{#with game}}
     <h3 class="title">{{title}}</h3>
-    <div class="decklists clearfix">
-      <div class="player1 pull-left">
-        {{#with player1}}
-        {{name}}
-        {{>decklist}}
-        {{/with}}
-      </div>
 
-      <div class="player2 pull-right">
-        {{#with player2}}
-        {{name}}
-        {{>decklist}}
-        {{/with}}
-      </div>
-    </div>
+    {{>decklists}}
 
     {{>boardstate}}
 
@@ -55,10 +42,6 @@
   </div>
 </template>
 
-<template name="decklist">
-  <ul>
-    {{#each decklist}}
-    <li>{{this.quantity}} <a class="card" name="{{this.name}}">{{this.name}}</a></li>
-    {{/each}}
-  </ul>
-</template>
+
+
+

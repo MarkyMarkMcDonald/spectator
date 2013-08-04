@@ -4,7 +4,7 @@
   <div class="row">
     <div class="span12">
       {{#if currentUser}}
-      <button class="create">Create Game</button>
+      <button class="btn btn-primary create">Create Game</button>
       {{/if}}
     </div>
   </div>
@@ -15,6 +15,9 @@
       <th>Title</th>
       <th>Player 1</th>
       <th>Player 2</th>
+      {{#if currentUser}}
+      <th>Record</th>
+      {{/if}}
     </tr>
     {{#each games}}
     <tr>
@@ -29,4 +32,5 @@
   <td><a href="/games/{{_id}}">{{title}}</a></td>
   <td>{{player1.name}}</td>
   <td>{{player2.name}}</td>
+  <td>{{#if isOwner}}<a class="btn btn-mini" href="/games/{{_id}}/record">Record</a>{{/if}}</td>
 </template>

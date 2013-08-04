@@ -9,7 +9,7 @@ Games.allow({
     if (userId !== game.owner)
       return false; // not the owner
 
-    var allowed = ["title", "description"];
+    var allowed = ["title", "description", "player1", "player2" ];
     if (_.difference(fields, allowed).length)
       return false; // tried to write to forbidden field
 
@@ -18,9 +18,9 @@ Games.allow({
     // future Meteor will have a schema system to makes that easier.
     return true;
   },
-  remove: function (userId, playingField) {
-    // Only the owner can remove a playing field
-    return playingField.owner === userId;
+  remove: function (userId, game) {
+    // Only the owner can remove a game
+    return game.owner === userId;
   }
 
 });

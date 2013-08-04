@@ -1,0 +1,31 @@
+<template name="recordingGame">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <div class="recording-game">
+    {{#with game}}
+    <div class="details">
+      <h3>Recording</h3>
+      {{title}}
+
+      <div class="player1 pull-left">
+        {{#with currentPlayer}}
+          {{>decklist}}
+        {{/with}}
+      </div>
+
+
+    </div>
+    {{#with currentPlayer}}
+    <button class="switch-players">Switch Players</button>
+    <div class="board">
+        {{>zone zones.hand}}
+        {{>zone zones.stack}}
+        {{>zone zones.play}}
+        {{>zone zones.graveyard}}
+        {{>zone zones.exile}}
+    </div>
+    {{/with}}
+    {{/with}}
+  </div>
+</template>

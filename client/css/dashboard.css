@@ -1,5 +1,11 @@
-body .sidebar { width: 250px; margin: 15px; }
-body .selected-game { width: 960px; margin: 0 auto; }
+html, body { height: 100%; }
+
+body .container { width: 960px; height: 100%; margin: 0 auto; }
+body .sidebar { width: 252px; margin: 15px; }
+body .recording-game { height: 100%; }
+body .recording-game .board { height: 100%; clear: both; }
+body .recording-game .zone { width: 18%; height: 40%; }
+body .recording-game .zone.play, body .recording-game .zone.hand, body .recording-game .zone.graveyard, body .recording-game .zone.exile, body .recording-game .zone.stack { background-color: grey; margin: 0 1%; }
 body .selected-game .title { margin: 0 auto; text-align: center; }
 body .selected-game ul { list-style: none; }
 body .selected-game .decklists .player1, body .selected-game .decklists .player2 { width: 200px; }
@@ -7,7 +13,7 @@ body .selected-game .horizontal-divider { clear: both; width: 100%; background-c
 body .selected-game .hovered-card { width: 200px; height: 280px; }
 body .selected-game .hovered-card img { width: 200px; height: 280px; }
 body .selected-game .board-state { width: 760px; }
-body .selected-game .zones .zone .card { width: 44px; height: 60px; border: 1px solid black; }
+body .selected-game .zones .zone .card { width: 44px; height: 60px; border: 1px solid black; float: left; }
 body .selected-game .zones .zone.hand { background-color: lightblue; height: 100px; width: 760px; }
 body .selected-game .zones .zone.stack { background-color: darkred; height: 250px; width: 100px; }
 body .selected-game .zones .zone.play { background-color: lightgrey; height: 250px; width: 660px; }

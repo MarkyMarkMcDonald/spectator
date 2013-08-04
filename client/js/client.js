@@ -1,15 +1,21 @@
 Meteor.subscribe("games");
-Meteor.subscribe("cards");
-
 
 Meteor.Router.add({
   '/': 'home',
   '/games/new': 'createGameDialog',
   '/games/:id': function(id){
-    Session.set('selectedGame_id', id);
+    Session.set('currentGame_id', id);
     return 'selectedGame';
+  },
+  '/games/:id/record': function(id) {
+    Session.set('currentGame_id', id);
+    return 'recordingGame';
   }
 });
+
+Meteor.Router.beforeRouting = function() {
+  Session.set('hovered-card', null);
+};
 
 Meteor.Router.filters({
   requireLogin: function(page) {
@@ -48,11 +54,16 @@ Template.games.games = function() {
   return Games.find({}, {sort: {name: 1}})
 };
 
-
-Template.selectedGame.game = function(){
-  var selectedGame_id = Session.get("selectedGame_id");
-  return selectedGame_id && Games.findOne({_id: selectedGame_id});
+Template.gameRow.isOwner = function(){
+  return this.owner == Meteor.userId();
 };
+
+findCurrentGame = function(){
+  var id = Session.get("currentGame_id");
+  return id && Games.findOne({_id: id});
+};
+
+Template.selectedGame.game = Template.recordingGame.game  = findCurrentGame;
 
 Template.selectedGame.events({
   'click .home': function(){
