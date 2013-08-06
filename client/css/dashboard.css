@@ -21,7 +21,7 @@ body .selected-game .horizontal-divider { clear: both; width: 100%; background-c
 body .selected-game .hovered-card { width: 200px; height: 280px; }
 body .selected-game .hovered-card img { width: 200px; height: 280px; }
 body .selected-game .board-state { width: 760px; }
-body .selected-game .zones .zone .card { width: 44px; height: 60px; border: 1px solid black; float: left; }
+body .selected-game .zones .zone .card { width: 56px; height: 85px; background-color: darkgrey; border: 1px solid black; float: left; }
 body .selected-game .zones .zone.hand { background-color: lightblue; height: 100px; width: 760px; }
 body .selected-game .zones .zone.stack { background-color: darkred; height: 250px; width: 100px; }
 body .selected-game .zones .zone.play { background-color: lightgrey; height: 250px; width: 660px; }
