@@ -38,7 +38,7 @@ Template.games.events({
 Session.setDefault('hovered-card', {});
 
 var showCard = function(e){
-  var name = $(e.target).attr('name');
+  var name = $(e.target).attr('data-name');
   Meteor.http.get('/card/' + name, {}, function(error,data){
     var json = JSON.parse(data.content);
     Session.set('hovered-card', json);

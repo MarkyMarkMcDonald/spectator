@@ -19,7 +19,7 @@
 <template name="decklist">
   <ul>
     {{#each decklist}}
-    <li>{{this.quantity}} <a class="card" name="{{this.name}}">{{this.name}}</a></li>
+    <li>{{this.quantity}} <a class="card" data-name="{{this.name}}">{{this.name}}</a></li>
     {{/each}}
   </ul>
 </template>
