@@ -14,7 +14,7 @@ Template.recordingGame.events({
   'click .details .card': function(){
     var currentPlayer = Session.get('currentPlayer');
     var game = findCurrentGame();
-    var target = currentPlayer + '.zones.play.cards';
+    var target = currentPlayer + '.zones.hand.cards';
     var pushObject = {};
     pushObject[target] = {name: this.name};
     Games.update({_id: game._id},{$push: pushObject});
@@ -28,25 +28,18 @@ Template.board.rendered = function(){
   });
 
   $('.board').on('sortreceive', function(event, ui){
-    var senderName = ui.sender.attr('data-name');
-    var receiverName = ui.item.parent('.cards').attr('data-name');
-    var cardName = ui.item.attr('data-name');
+    var options = {};
 
-    var game = findCurrentGame();
-    var currentPlayer = Session.get('currentPlayer');
+    options.senderName = ui.sender.attr('data-name');
+    options.receiverName = ui.item.parent('.cards').attr('data-name');
 
-    var sendingObject = {};
-    var sendingTarget = currentPlayer + '.zones.' + senderName + '.cards';
-    sendingObject[sendingTarget] = {name: cardName};
+    options.cardName = ui.item.attr('data-name');
+    options.game_id = findCurrentGame()._id;
 
-    var receivingObject = {};
-    var receivingTarget = currentPlayer + '.zones.' + receiverName+ '.cards';
-    receivingObject[receivingTarget] = {name: cardName};
+    options.currentPlayer = Session.get('currentPlayer');
 
-    Games.update({_id: game._id},{$pull: sendingObject}, function(error){
-      if (!error) {
-        Games.update({_id: game._id},{$push: receivingObject});
-      }
+    Meteor.call('moveCard', options, function(error){
+      console.log(error);
     });
   })
 };
