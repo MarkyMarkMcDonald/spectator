@@ -18,14 +18,18 @@
     </div>
     {{#with currentPlayer}}
     <button class="switch-players">Switch Players</button>
-    <div class="board">
-        {{>zone zones.hand}}
-        {{>zone zones.stack}}
-        {{>zone zones.play}}
-        {{>zone zones.graveyard}}
-        {{>zone zones.exile}}
-    </div>
+    {{>board}}
     {{/with}}
     {{/with}}
+  </div>
+</template>
+
+<template name="board">
+  <div class="board">
+    {{>zone zones.hand}}
+    {{>zone zones.stack}}
+    {{>zone zones.play}}
+    {{>zone zones.graveyard}}
+    {{>zone zones.exile}}
   </div>
 </template>

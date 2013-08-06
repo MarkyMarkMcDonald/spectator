@@ -3,7 +3,8 @@
   "dependencies": {
     "basePackages": {
       "router": {},
-      "roles": {}
+      "roles": {},
+      "jquery-ui": {}
     },
     "packages": {
       "router": {
@@ -15,6 +16,11 @@
         "git": "https://github.com/alanning/meteor-roles.git",
         "tag": "v1.0.5",
         "commit": "a6e0ce33f8dc69a816165c458b138c2acb30ad0e"
+      },
+      "jquery-ui": {
+        "git": "https://github.com/TimHeckel/meteor-jquery-ui.git",
+        "tag": "v1.9.2",
+        "commit": "c437d45edcf1367df8d5ffa8bad2867758030bd2"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",

@@ -1,8 +1,8 @@
 <template name="zone">
-  <div class="zone {{name}} pull-left">
-    <div class="cards">
+  <div class="zone {{name}} pull-left clearfix">
+    <div class="cards" data-name="{{name}}">
       {{#each cards}}
-      <div class="card {{color}}">
+      <div class="card {{color}}" data-name="{{name}}">
         {{name}}
       </div>
       {{/each}}
