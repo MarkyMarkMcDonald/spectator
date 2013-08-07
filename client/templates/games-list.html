@@ -1,31 +1,52 @@
 <template name="games">
-  <h2>Games</h2>
+  <div class="games">
+    <div class="public-games">
+      <span class="title">Public Games</span>
+      <table class="table-striped">
+        <tbody>
+        <tr>
+          <th>Title</th>
+          <th>Player 1</th>
+          <th>Player 2</th>
+          {{#if currentUser}}
+          <th>Record</th>
+          {{/if}}
+        </tr>
+        {{#each publicGames}}
+        <tr>
+          {{>gameRow}}
+        </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
 
-  <div class="row">
-    <div class="span12">
-      {{#if currentUser}}
-      <button class="btn btn-primary create">Create Game</button>
+    {{#if currentUser}}
+    <div class="row">
+      <div class="span12">
+        <button class="btn btn-primary create">Create Game</button>
+      </div>
+    </div>
+    <div class="user-games">
+      <span class="title">Your Games</span>
+      <table class="table-striped">
+        <tbody>
+        <tr>
+          <th>Title</th>
+          <th>Player 1</th>
+          <th>Player 2</th>
+          <th>Record</th>
+        </tr>
+        {{#each userGames}}
+        <tr>
+          {{>gameRow}}
+        </tr>
+        {{/each}}
+        </tbody>
+      </table>
       {{/if}}
     </div>
   </div>
-
-  <table>
-    <tbody>
-    <tr>
-      <th>Title</th>
-      <th>Player 1</th>
-      <th>Player 2</th>
-      {{#if currentUser}}
-      <th>Record</th>
-      {{/if}}
-    </tr>
-    {{#each games}}
-    <tr>
-      {{>gameRow}}
-    </tr>
-    {{/each}}
-    </tbody>
-  </table>
 </template>
 
 <template name="gameRow">

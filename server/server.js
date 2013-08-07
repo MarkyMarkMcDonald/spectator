@@ -56,10 +56,6 @@ Meteor.methods({
     var receivingTarget = currentPlayer + '.zones.' + receiverName + '.cards';
     receivingObject[receivingTarget] = {name: cardName};
 
-
-    console.log("performing updates:");
-    console.log(sendingObjectUnset);
-    console.log([unsetSelector,{$unset: sendingObjectUnset}]);
     Games.update(unsetSelector, {$unset: sendingObjectUnset}, function(error){
       if (error) {
         console.log(1);
@@ -71,8 +67,10 @@ Meteor.methods({
             console.log(error);
           } else {
             Games.update({_id: game_id},{$push: receivingObject}, function(error){
-              console.log(3);
-              console.log(error);
+              if (error) {
+                console.log(3);
+                console.log(error);
+              }
             });
           }
         });

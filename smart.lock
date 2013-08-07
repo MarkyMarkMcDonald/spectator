@@ -4,7 +4,8 @@
     "basePackages": {
       "router": {},
       "roles": {},
-      "jquery-ui": {}
+      "jquery-ui": {},
+      "pagination": {}
     },
     "packages": {
       "router": {
@@ -21,6 +22,11 @@
         "git": "https://github.com/TimHeckel/meteor-jquery-ui.git",
         "tag": "v1.9.2",
         "commit": "c437d45edcf1367df8d5ffa8bad2867758030bd2"
+      },
+      "pagination": {
+        "git": "https://github.com/egtann/meteor-pagination.git",
+        "tag": "v1.1.0",
+        "commit": "02d79e38cc622316c9d4e019e4b7e0d77f7134c9"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",

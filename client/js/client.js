@@ -1,5 +1,9 @@
 Meteor.subscribe("games");
 
+Meteor.startup(function(){
+  Pagination.style('bootstrap');
+});
+
 Meteor.Router.add({
   '/': 'home',
   '/games/new': 'createGameDialog',
@@ -50,8 +54,12 @@ Template.hoveredCard.card = function() {
 
 };
 
-Template.games.games = function() {
-  return Games.find({}, {sort: {name: 1}})
+Template.games.publicGames = function() {
+  return Games.find({owner: !Meteor.userId()}, {sort: {name: 1}, limit: 10});
+};
+
+Template.games.userGames = function(){
+  return Games.find({owner: Meteor.userId()}, {sort: {name: 1}});
 };
 
 Template.gameRow.isOwner = function(){
@@ -71,4 +79,3 @@ Template.selectedGame.events({
   },
   'mouseenter .card': showCard
 });
-

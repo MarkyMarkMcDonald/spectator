@@ -2,6 +2,7 @@
   "packages": {
     "router": {},
     "roles": {},
-    "jquery-ui": {}
+    "jquery-ui": {},
+    "pagination": {}
   }
 }
