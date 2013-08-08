@@ -6,20 +6,17 @@
     <a href="/">Home</a>
     {{#with game}}
     <div class="details">
-      <h3>Recording</h3>
-      {{title}}
-
-      <div class="player1 pull-left">
-        {{#with currentPlayer}}
-          {{>decklist}}
-        {{/with}}
-      </div>
-
-
+      <h3>Recording - {{title}}</h3>
+      {{#with currentPlayer}}{{name}}{{/with}}
+      <button class="btn btn-small switch-players">Switch Players</button>
+    </div>
+    <div class="decklist player1 pull-left">
+      {{#with currentPlayer}}
+        {{>decklist}}
+      {{/with}}
     </div>
     {{#with currentPlayer}}
-    <button class="switch-players">Switch Players</button>
-    {{>board}}
+      {{>board}}
     {{/with}}
     {{/with}}
   </div>
