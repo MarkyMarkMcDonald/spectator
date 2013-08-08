@@ -51,11 +51,14 @@ var showCard = function(e){
 
 Template.hoveredCard.card = function() {
   return Session.get('hovered-card');
-
 };
 
 Template.games.publicGames = function() {
-  return Games.find({owner: !Meteor.userId()}, {sort: {name: 1}, limit: 10});
+  if (Meteor.userId()) {
+    return Games.find({owner: !Meteor.userId(), public: true}, {sort: {name: 1}, limit: 10});
+  } else {
+    return Games.find({public: true}, {sort: {name: 1}, limit: 10});
+  }
 };
 
 Template.games.userGames = function(){
@@ -74,8 +77,5 @@ findCurrentGame = function(){
 Template.selectedGame.game = Template.recordingGame.game  = findCurrentGame;
 
 Template.selectedGame.events({
-  'click .home': function(){
-    Meteor.Router.to('/');
-  },
   'mouseenter .card': showCard
 });

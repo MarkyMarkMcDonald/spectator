@@ -3,29 +3,6 @@ html, body { height: 100%; }
 body .container { width: 960px; height: 100%; margin: 0 auto; }
 body .container .intro { float: right; width: 500px; margin-top: 30px; }
 body .container .sidebar { width: 430px; margin: 15px; }
-body .recording-game { height: 100%; }
-body .recording-game .board { height: 100%; clear: both; }
-body .recording-game .zone { width: 18%; min-height: 100%; }
-body .recording-game .zone .cards { min-height: 200px; }
-body .recording-game .zone .cards .card { background-color: lightblue; border-radius: 5px; margin: 3px 5px; }
-body .recording-game .zone.play:before { content: "PLAY"; left: 25px; }
-body .recording-game .zone.hand:before { content: "HAND"; left: 18px; }
-body .recording-game .zone.graveyard:before { content: "GY"; left: 45px; }
-body .recording-game .zone.exile:before { content: "EXILE"; left: 19px; }
-body .recording-game .zone.stack:before { content: "STACK"; left: 4px; }
-body .recording-game .zone.play, body .recording-game .zone.hand, body .recording-game .zone.graveyard, body .recording-game .zone.exile, body .recording-game .zone.stack { background-color: darkgrey; margin: 0 1%; position: relative; }
-body .recording-game .zone.play:before, body .recording-game .zone.hand:before, body .recording-game .zone.graveyard:before, body .recording-game .zone.exile:before, body .recording-game .zone.stack:before { position: absolute; font-size: 50px; color: lightgrey; top: 40%; }
-body .selected-game .title { margin: 0 auto; text-align: center; }
-body .selected-game ul { list-style: none; }
-body .selected-game .decklists .player1, body .selected-game .decklists .player2 { width: 200px; }
-body .selected-game .horizontal-divider { clear: both; width: 100%; background-color: black; height: 1px; }
-body .selected-game .hovered-card { width: 200px; height: 280px; }
-body .selected-game .hovered-card img { width: 200px; height: 280px; }
-body .selected-game .board-state { width: 760px; }
-body .selected-game .zones .zone .card { width: 56px; height: 85px; background-color: darkgrey; border: 1px solid black; float: left; margin: 5px 3px; }
-body .selected-game .zones .zone.hand { background-color: lightblue; height: 100px; width: 760px; }
-body .selected-game .zones .zone.stack { background-color: darkred; height: 250px; width: 100px; }
-body .selected-game .zones .zone.play { background-color: lightgrey; height: 250px; width: 660px; }
 body .games .create { margin-top: 20px; }
 body .games .title { font-size: 24px; }
 body .games .user-games, body .games .public-games { margin-top: 20px; }

@@ -1,0 +1,59 @@
+.selected-game
+  .title
+    margin: 0 auto
+    text-align: left
+
+  ul
+    list-style: none
+
+  .decklists
+    .player1, .player2
+      width: 50%
+
+  .horizontal-divider
+    clear: both
+    width: 100%
+    background-color: black
+    height: 1px
+
+  $boardWidth: 760px
+  $cardWidth: 150px
+  $stackWidth: 100px
+
+  .hovered-card
+    width: $cardWidth
+    height: 210px
+    img
+      width: $cardWidth
+      height: 210px
+
+  .board-state
+    width: $boardWidth
+
+  .zones
+    .zone
+      .card
+        width: 56px
+        height: 85px
+        background-color: darkgray
+        border: 1px solid black
+        float: left
+        margin: 5px 3px
+
+      &.hand
+        background-color: lightblue
+        height: 100px
+        width: $boardWidth
+      &.stack
+        background-color: darkred
+        height: 250px
+        width: $stackWidth
+        & .card:nth-child(n+2)
+          margin-top: -40px
+        & .card:nth-child(n+5)
+          display: none
+
+      &.play
+        background-color: lightgray
+        height: 250px
+        width: $boardWidth - $stackWidth

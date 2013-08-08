@@ -1,0 +1,46 @@
+.recording-game
+  height: 100%
+
+  .board
+    height: 100%
+    clear: both
+
+  .zone
+    width: 18%
+    min-height: 100%
+
+    .cards
+      min-height: 200px
+      .card
+        background-color: lightblue
+        border-radius: 5px
+        margin: 3px 5px
+
+
+    &.play:before
+      content: "PLAY"
+      left: 25px
+    &.hand:before
+      content: "HAND"
+      left: 18px
+    &.graveyard:before
+      content: "GY"
+      left: 45px
+    &.exile:before
+      content: "EXILE"
+      left: 19px
+    &.stack:before
+      content: "STACK"
+      left: 4px
+
+    &.play, &.hand, &.graveyard, &.exile, &.stack
+      background-color: darkgray
+      margin: 0 1%
+      position: relative
+      &:before
+        position: absolute
+        font-size: 50px
+        color: lightgray
+        top: 40%
+
+

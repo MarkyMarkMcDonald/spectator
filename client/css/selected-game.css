@@ -1,0 +1,13 @@
+.selected-game .title { margin: 0 auto; text-align: left; }
+.selected-game ul { list-style: none; }
+.selected-game .decklists .player1, .selected-game .decklists .player2 { width: 50%; }
+.selected-game .horizontal-divider { clear: both; width: 100%; background-color: black; height: 1px; }
+.selected-game .hovered-card { width: 150px; height: 210px; }
+.selected-game .hovered-card img { width: 150px; height: 210px; }
+.selected-game .board-state { width: 760px; }
+.selected-game .zones .zone .card { width: 56px; height: 85px; background-color: darkgrey; border: 1px solid black; float: left; margin: 5px 3px; }
+.selected-game .zones .zone.hand { background-color: lightblue; height: 100px; width: 760px; }
+.selected-game .zones .zone.stack { background-color: darkred; height: 250px; width: 100px; }
+.selected-game .zones .zone.stack .card:nth-child(n+2) { margin-top: -40px; }
+.selected-game .zones .zone.stack .card:nth-child(n+5) { display: none; }
+.selected-game .zones .zone.play { background-color: lightgrey; height: 250px; width: 660px; }
