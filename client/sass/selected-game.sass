@@ -16,9 +16,11 @@
     background-color: black
     height: 1px
 
-  $boardWidth: 760px
+  $boardWidth: 710px
+  $boardHeight: 350px
   $cardWidth: 150px
   $stackWidth: 100px
+  $playerInfoWidth: 100px
 
   .hovered-card
     width: $cardWidth
@@ -40,20 +42,35 @@
         float: left
         margin: 5px 3px
 
+      $handHeight: 100px
       &.hand
         background-color: lightblue
         height: 100px
-        width: $boardWidth
+        width: $boardWidth - $playerInfoWidth
       &.stack
         background-color: darkred
-        height: 250px
+        height: $boardHeight - $handHeight
         width: $stackWidth
         & .card:nth-child(n+2)
           margin-top: -40px
         & .card:nth-child(n+5)
           display: none
-
+        & .card
+          margin-left: 20px
       &.play
         background-color: lightgray
         height: 250px
-        width: $boardWidth - $stackWidth
+        width: $boardWidth - $stackWidth - $playerInfoWidth
+    .player-info
+      background-color: lightgray
+      height: $boardHeight
+      width: $playerInfoWidth
+      .zone.graveyard, .zone.exile
+        height: $boardHeight / 2
+        width: $playerInfoWidth
+        .card:nth-child(n+2)
+          margin-top: -40px
+        .card:nth-child(n+3)
+          display: none
+        .card
+          margin-left: 20px

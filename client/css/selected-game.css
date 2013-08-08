@@ -4,10 +4,16 @@
 .selected-game .horizontal-divider { clear: both; width: 100%; background-color: black; height: 1px; }
 .selected-game .hovered-card { width: 150px; height: 210px; }
 .selected-game .hovered-card img { width: 150px; height: 210px; }
-.selected-game .board-state { width: 760px; }
+.selected-game .board-state { width: 710px; }
 .selected-game .zones .zone .card { width: 56px; height: 85px; background-color: darkgrey; border: 1px solid black; float: left; margin: 5px 3px; }
-.selected-game .zones .zone.hand { background-color: lightblue; height: 100px; width: 760px; }
+.selected-game .zones .zone.hand { background-color: lightblue; height: 100px; width: 610px; }
 .selected-game .zones .zone.stack { background-color: darkred; height: 250px; width: 100px; }
 .selected-game .zones .zone.stack .card:nth-child(n+2) { margin-top: -40px; }
 .selected-game .zones .zone.stack .card:nth-child(n+5) { display: none; }
-.selected-game .zones .zone.play { background-color: lightgrey; height: 250px; width: 660px; }
+.selected-game .zones .zone.stack .card { margin-left: 20px; }
+.selected-game .zones .zone.play { background-color: lightgrey; height: 250px; width: 510px; }
+.selected-game .zones .player-info { background-color: lightgrey; height: 350px; width: 100px; }
+.selected-game .zones .player-info .zone.graveyard, .selected-game .zones .player-info .zone.exile { height: 175px; width: 100px; }
+.selected-game .zones .player-info .zone.graveyard .card:nth-child(n+2), .selected-game .zones .player-info .zone.exile .card:nth-child(n+2) { margin-top: -40px; }
+.selected-game .zones .player-info .zone.graveyard .card:nth-child(n+3), .selected-game .zones .player-info .zone.exile .card:nth-child(n+3) { display: none; }
+.selected-game .zones .player-info .zone.graveyard .card, .selected-game .zones .player-info .zone.exile .card { margin-left: 20px; }
