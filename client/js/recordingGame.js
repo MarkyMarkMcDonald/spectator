@@ -11,12 +11,14 @@ Template.recordingGame.events({
     var nextPlayer = (currentPlayer == 'player1') ? 'player2' : 'player1';
     Session.set('currentPlayer', nextPlayer)
   },
-  'click .details .card': function(){
+  'click .card': function(event){
     var currentPlayer = Session.get('currentPlayer');
     var game = findCurrentGame();
+    var cardName = $(event.target).attr('data-name');
+    var card = getCard(cardName, game);
     var target = currentPlayer + '.zones.hand.cards';
     var pushObject = {};
-    pushObject[target] = {name: this.name};
+    pushObject[target] = card;
     Games.update({_id: game._id},{$push: pushObject});
   }
 });

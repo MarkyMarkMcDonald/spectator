@@ -16,7 +16,6 @@ Template.createGameDialog.events({
       player2: player2,
       decklist1: player1Decklist,
       decklist2: player2Decklist
-
     }, function (error) {
       Session.set('error', error);
     });

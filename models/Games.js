@@ -38,12 +38,13 @@ var decklistFromString = function(decklist) {
   var lines = decklist.split('\n');
   var cards = [];
   lines.forEach(function(line){
-    var name = line.slice(2);
-    var quantity = line[0];
-    cards.push({
-      quantity: quantity,
-      name: name
-    })
+    if (line) {
+      var name = line.split(/[\s(,\s)(x\s)]+(.+)?/)[1];
+      var quantity = line.split(/[\s(,\s)(x\s)]+(.+)?/)[0];
+      var card = Meteor.call('getCard', {name: name});
+      _.extend(card, {quantity: quantity});
+      cards.push(card)
+    }
   });
   return cards;
 };

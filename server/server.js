@@ -2,39 +2,50 @@ Meteor.publish("games", function(){
   return Games.find({$or: [{"public": true}, {owner: this.userId}]});
 }, {});
 
-Meteor.Router.add('/card/:name', 'GET', function(name) {
-  var card = cards[name];
-  if (!card) return JSON.stringify({});
-  var cardNumber = 0;
-  for(var key in card.sets) {
-    var obj = card.sets[key];
-    for (var prop in obj) {
-      cardNumber = prop;
-      break;
-    }
-    break;
-  }
-  var cardNumber = card.sets[Object.keys(card.sets)[0]];
-  card.image = "http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=" + cardNumber;
-  card.name = card["name"];
-  return JSON.stringify(card);
+var NonEmptyString = Match.Where(function (x) {
+  check(x, String);
+  return x.length !== 0;
 });
 
 Meteor.methods({
-  moveCard: function(options){
-    try {
-      check(options, {
-        game_id: Match.Any,
-        currentPlayer: Match.Any,
-        cardName: Match.Any,
-        senderName: Match.Any,
-        receiverName: Match.Any
-      });
-      var owner = Games.findOne({_id: options.game_id}).owner;
-      check(this.userId, owner);
-    } catch(error) {
-      console.log("server moveCard error: " + error);
+  getCard: function(options){
+    check(options, {name: String});
+    var name = options.name;
+
+    var card = cards[name];
+    if (!card) return JSON.stringify({});
+    var cardNumber = 0;
+    for(var key in card.sets) {
+      var obj = card.sets[key];
+      for (var prop in obj) {
+        cardNumber = prop;
+        break;
+      }
+      break;
     }
+    var cardNumber = card.sets[Object.keys(card.sets)[0]];
+    card.image = "http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=" + cardNumber;
+    card.name = card["name"];
+    return card;
+  },
+
+  moveCard: function(options){
+    check(options, {
+      game_id: NonEmptyString,
+      currentPlayer: NonEmptyString,
+      cardName: NonEmptyString,
+      senderName: NonEmptyString,
+      receiverName: NonEmptyString
+    });
+
+    // Make sure this is a game owner
+    var owner = Games.findOne({_id: options.game_id}).owner;
+    if (owner != this.userId){
+      throw new Meteor.Error(403, "You don't own this game!");
+    }
+
+
+
 
     var game_id = options.game_id;
     var currentPlayer = options.currentPlayer;

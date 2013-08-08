@@ -47,6 +47,8 @@
         background-color: lightblue
         height: 100px
         width: $boardWidth - $playerInfoWidth
+        .card
+          margin-left: 10px
       &.stack
         background-color: darkred
         height: $boardHeight - $handHeight
@@ -61,10 +63,18 @@
         background-color: lightgray
         height: 250px
         width: $boardWidth - $stackWidth - $playerInfoWidth
+        .card
+          margin-left: 10px
     .player-info
+      position: relative
       background-color: lightgray
       height: $boardHeight
       width: $playerInfoWidth
+      &:after
+        position: absolute
+        border-right: 1px solid black
+        width: inherit
+        height: inherit
       .zone.graveyard, .zone.exile
         height: $boardHeight / 2
         width: $playerInfoWidth

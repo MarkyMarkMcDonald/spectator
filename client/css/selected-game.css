@@ -7,12 +7,15 @@
 .selected-game .board-state { width: 710px; }
 .selected-game .zones .zone .card { width: 56px; height: 85px; background-color: darkgrey; border: 1px solid black; float: left; margin: 5px 3px; }
 .selected-game .zones .zone.hand { background-color: lightblue; height: 100px; width: 610px; }
+.selected-game .zones .zone.hand .card { margin-left: 10px; }
 .selected-game .zones .zone.stack { background-color: darkred; height: 250px; width: 100px; }
 .selected-game .zones .zone.stack .card:nth-child(n+2) { margin-top: -40px; }
 .selected-game .zones .zone.stack .card:nth-child(n+5) { display: none; }
 .selected-game .zones .zone.stack .card { margin-left: 20px; }
 .selected-game .zones .zone.play { background-color: lightgrey; height: 250px; width: 510px; }
-.selected-game .zones .player-info { background-color: lightgrey; height: 350px; width: 100px; }
+.selected-game .zones .zone.play .card { margin-left: 10px; }
+.selected-game .zones .player-info { position: relative; background-color: lightgrey; height: 350px; width: 100px; }
+.selected-game .zones .player-info:after { position: absolute; border-right: 1px solid black; width: inherit; height: inherit; }
 .selected-game .zones .player-info .zone.graveyard, .selected-game .zones .player-info .zone.exile { height: 175px; width: 100px; }
 .selected-game .zones .player-info .zone.graveyard .card:nth-child(n+2), .selected-game .zones .player-info .zone.exile .card:nth-child(n+2) { margin-top: -40px; }
 .selected-game .zones .player-info .zone.graveyard .card:nth-child(n+3), .selected-game .zones .player-info .zone.exile .card:nth-child(n+3) { display: none; }
