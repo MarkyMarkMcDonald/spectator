@@ -5,13 +5,17 @@ Template.recordingGame.currentPlayer = function(){
   return this[player];
 };
 
+Template.recordingGame.otherPlayer = function(){
+  return (Session.get('currentPlayer') == 'player1') ? 'player2' : 'player1';
+};
+
 Template.recordingGame.events({
   'click .switch-players': function(){
     var currentPlayer = Session.get('currentPlayer');
     var nextPlayer = (currentPlayer == 'player1') ? 'player2' : 'player1';
     Session.set('currentPlayer', nextPlayer)
   },
-  'click .card': function(event){
+  'click .decklist .card': function(event){
     var currentPlayer = Session.get('currentPlayer');
     var game = findCurrentGame();
     var cardName = $(event.target).attr('data-name');

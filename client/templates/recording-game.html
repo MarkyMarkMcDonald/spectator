@@ -8,7 +8,7 @@
     <div class="details">
       <h3>Recording - {{title}}</h3>
       {{#with currentPlayer}}{{name}}{{/with}}
-      <button class="btn btn-small switch-players">Switch Players</button>
+      <a class="btn btn-small" href="/games/{{_id}}/record/{{otherPlayer}}">Switch Players</a>
     </div>
     <div class="decklist player1 pull-left">
       {{#with currentPlayer}}

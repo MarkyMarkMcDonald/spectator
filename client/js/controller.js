@@ -5,7 +5,8 @@ Meteor.Router.add({
     Session.set('currentGame_id', id);
     return 'selectedGame';
   },
-  '/games/:id/record': function(id) {
+  '/games/:id/record/:currentPlayer': function(id, currentPlayer) {
+    Session.set('currentPlayer', currentPlayer);
     Session.set('currentGame_id', id);
     return 'recordingGame';
   }
