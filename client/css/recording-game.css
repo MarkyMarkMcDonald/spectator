@@ -3,6 +3,7 @@
 .recording-game .zone { width: 18%; min-height: 100%; }
 .recording-game .zone .cards { min-height: 200px; }
 .recording-game .zone .cards .card { background-color: lightblue; border-radius: 5px; margin: 3px 5px; }
+.recording-game .zone .cards .card img { display: none; }
 .recording-game .zone.play:before { content: "PLAY"; left: 25px; }
 .recording-game .zone.hand:before { content: "HAND"; left: 18px; }
 .recording-game .zone.graveyard:before { content: "GY"; left: 45px; }
