@@ -62,11 +62,12 @@ Meteor.methods({
       var pullPattern = {};
       var cardsToPullFrom = currentPlayer + '.zones.' + zoneLeaving + '.cards';
       pullPattern[cardsToPullFrom] = null;
-      Games.update({_id: game_id}, {"$pull": pullPattern}, function(){
-        var pushPattern = {};
-        var cardsToPushTo = currentPlayer + '.zones.' + zoneEntering + '.cards';
-        pushPattern[cardsToPushTo] = sentCard;
-        Games.update({_id: game_id}, {"$push": pushPattern});
+
+      var pushPattern = {};
+      var cardsToPushTo = currentPlayer + '.zones.' + zoneEntering + '.cards';
+      pushPattern[cardsToPushTo] = sentCard;
+      Games.update({_id: game_id}, {"$pull": pullPattern, "$push": pushPattern}, function(){
+      // async 4 lyfe
       });
     });
   }
