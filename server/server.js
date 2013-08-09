@@ -44,48 +44,30 @@ Meteor.methods({
       throw new Meteor.Error(403, "You don't own this game!");
     }
 
-
-
-
     var game_id = options.game_id;
     var currentPlayer = options.currentPlayer;
     var cardName = options.cardName;
-    var senderName = options.senderName;
-    var receiverName = options.receiverName;
+    var zoneLeaving = options.senderName;
+    var zoneEntering = options.receiverName;
+    var sentCard = Meteor.call('getCard', {name: cardName});
 
-    var sendingObject = {};
-    var sendingTarget = currentPlayer + '.zones.' + senderName + '.cards';
-    sendingObject[sendingTarget] = null;
+    var unsetGamePattern = {_id: game_id};
+    var nameFilter = {name: cardName};
+    var cardsToUnsetFrom = currentPlayer + '.zones.' + zoneLeaving + '.cards';
+    unsetGamePattern[cardsToUnsetFrom + '.name'] = cardName;
+    var unsetPattern = {};
+    unsetPattern[(cardsToUnsetFrom + '.$')] = nameFilter;
 
-    var sendingObjectUnset = {};
-    var sendingTargetUnset = currentPlayer + '.zones.' + senderName + '.cards.$';
-    sendingObjectUnset[sendingTargetUnset] = {name: cardName};
-    var unsetSelector = {_id: game_id};
-    unsetSelector[sendingTarget] = {name: cardName};
-
-    var receivingObject = {};
-    var receivingTarget = currentPlayer + '.zones.' + receiverName + '.cards';
-    receivingObject[receivingTarget] = {name: cardName};
-
-    Games.update(unsetSelector, {$unset: sendingObjectUnset}, function(error){
-      if (error) {
-        console.log(1);
-        console.log(error);
-      } else {
-        Games.update({_id: game_id},{$pull: sendingObject}, function(error){
-          if (error) {
-            console.log(2);
-            console.log(error);
-          } else {
-            Games.update({_id: game_id},{$push: receivingObject}, function(error){
-              if (error) {
-                console.log(3);
-                console.log(error);
-              }
-            });
-          }
-        });
-      }
+    Games.update(unsetGamePattern, {"$unset": unsetPattern}, function(error){
+      var pullPattern = {};
+      var cardsToPullFrom = currentPlayer + '.zones.' + zoneLeaving + '.cards';
+      pullPattern[cardsToPullFrom] = null;
+      Games.update({_id: game_id}, {"$pull": pullPattern}, function(){
+        var pushPattern = {};
+        var cardsToPushTo = currentPlayer + '.zones.' + zoneEntering + '.cards';
+        pushPattern[cardsToPushTo] = sentCard;
+        Games.update({_id: game_id}, {"$push": pushPattern});
+      });
     });
   }
 });
