@@ -1,0 +1,4 @@
+.create-game { width: 710px; left: 41%; }
+.create-game .players { width: 680px; }
+.create-game .player1, .create-game player2 { width: 240px; }
+.create-game .decklist-explanation { width: 200px; }

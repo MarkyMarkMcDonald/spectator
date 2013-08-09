@@ -1,5 +1,5 @@
 <template name="createGameDialog">
-  <div class="modal">
+  <div class="modal create-game">
     <div class="modal-header">
       <button type="button" class="close cancel">&times;</button>
       <h3>Add Game</h3>
@@ -20,15 +20,23 @@
         <input class="private" type="checkbox"/>
         Private Game
       </label>
-
-      <div class="row">
-        <div class="pull-left player1 span5">
+      <hr />
+      <div class="players">
+        <div class="player1 pull-left">
           <label>Player 1 Name:</label>
           <input class="name" type="text"/>
           <label>Decklist:</label>
           <textarea class="decklist" cols="30" rows="10"></textarea>
         </div>
-        <div class="pull-left player2 span5">
+        <div class="decklist-explanation pull-left">
+          Enter decklists as any of the following formats:
+          <ul>
+            <li>(4x {card})</li>
+            <li>(4, {card})</li>
+            <li>(4 {card})</li>
+          </ul>
+        </div>
+        <div class="player2 pull-left">
           <label>Player 2 Name:</label>
           <input class="name" type="text"/>
           <label>Decklist:</label>
