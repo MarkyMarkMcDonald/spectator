@@ -1,4 +1,4 @@
-<template name="recordingGame">
+<template name="gameRecording">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
@@ -12,22 +12,22 @@
     </div>
     <div class="decklist player1 pull-left">
       {{#with currentPlayer}}
-        {{>decklist}}
+        {{>decklistRecording}}
       {{/with}}
     </div>
     {{#with currentPlayer}}
-      {{>board}}
+      {{>boardRecording}}
     {{/with}}
     {{/with}}
   </div>
 </template>
 
-<template name="board">
+<template name="boardRecording">
   <div class="board">
-    {{>zone zones.hand}}
-    {{>zone zones.stack}}
-    {{>zone zones.play}}
-    {{>zone zones.graveyard}}
-    {{>zone zones.exile}}
+    {{>zoneRecording zones.hand}}
+    {{>zoneRecording zones.stack}}
+    {{>zoneRecording zones.play}}
+    {{>zoneRecording zones.graveyard}}
+    {{>zoneRecording zones.exile}}
   </div>
 </template>

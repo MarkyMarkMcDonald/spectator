@@ -1,0 +1,25 @@
+<template name="decklistsRecording">
+  <div class="decklists clearfix">
+    <div class="player1 pull-left">
+      {{#with player1}}
+      {{name}}
+      {{>decklistRecording}}
+      {{/with}}
+    </div>
+
+    <div class="player2 pull-right">
+      {{#with player2}}
+      {{name}}
+      {{>decklistRecording}}
+      {{/with}}
+    </div>
+  </div>
+</template>
+
+<template name="decklistRecording">
+  <ul>
+    {{#each decklist}}
+    <li>{{this.quantity}} <a class="card" data-name="{{this.name}}">{{this.name}}</a></li>
+    {{/each}}
+  </ul>
+</template>

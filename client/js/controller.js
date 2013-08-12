@@ -3,12 +3,12 @@ Meteor.Router.add({
   '/games/new': 'createGameDialog',
   '/games/:id': function(id){
     Session.set('currentGame_id', id);
-    return 'selectedGame';
+    return 'gameViewing';
   },
   '/games/:id/record/:currentPlayer': function(id, currentPlayer) {
     Session.set('currentPlayer', currentPlayer);
     Session.set('currentGame_id', id);
-    return 'recordingGame';
+    return 'gameRecording';
   }
 });
 

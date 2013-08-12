@@ -1,15 +1,17 @@
 Session.setDefault('currentPlayer','player1');
 
-Template.recordingGame.currentPlayer = function(){
+Template.gameRecording.game = findCurrentGame;
+
+Template.gameRecording.currentPlayer = function(){
   var player = Session.get('currentPlayer');
   return this[player];
 };
 
-Template.recordingGame.otherPlayer = function(){
+Template.gameRecording.otherPlayer = function(){
   return (Session.get('currentPlayer') == 'player1') ? 'player2' : 'player1';
 };
 
-Template.recordingGame.events({
+Template.gameRecording.events({
   'click .switch-players': function(){
     var currentPlayer = Session.get('currentPlayer');
     var nextPlayer = (currentPlayer == 'player1') ? 'player2' : 'player1';
@@ -27,7 +29,7 @@ Template.recordingGame.events({
   }
 });
 
-Template.board.rendered = function(){
+Template.gameRecording.rendered = function(){
   $('.board .cards').sortable({
     connectWith: '.cards',
     dropOnEmpty: true

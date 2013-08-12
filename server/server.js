@@ -23,7 +23,7 @@ Meteor.methods({
       }
       break;
     }
-    var cardNumber = card.sets[Object.keys(card.sets)[0]];
+    cardNumber = card.sets[Object.keys(card.sets)[0]];
     card.image = "http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=" + cardNumber;
     card.name = card["name"];
     return card;

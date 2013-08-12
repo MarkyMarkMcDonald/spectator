@@ -1,12 +1,12 @@
-<template name="selectedGame">
+<template name="gameViewing">
   <a href="/">Home</a>
   <div class="selected-game">
     {{#with game}}
     <h3 class="title">{{title}}</h3>
 
-    {{>decklists}}
+    {{>decklistsViewing}}
 
-    {{>boardstate}}
+    {{>boardViewing}}
 
     <div class="hovered-card pull-right">
       {{> hoveredCard}}
@@ -16,36 +16,36 @@
   </div>
 </template>
 
-<template name="boardstate">
+<template name="boardViewing">
   <div class="board-state pull-left">
     {{#with player1.zones}}
     <div class="player1 zones">
       <div class="player-info pull-left clearfix">
-        {{>zone graveyard}}
+        {{>zoneViewing graveyard}}
 
-        {{>zone exile}}
+        {{>zoneViewing exile}}
       </div>
 
-      {{>zone hand}}
+      {{>zoneViewing hand}}
 
-      {{>zone play}}
+      {{>zoneViewing play}}
 
-      {{>zone stack}}
+      {{>zoneViewing stack}}
     </div>
     {{/with}}
     <div class="horizontal-divider"></div>
     {{#with player2.zones}}
     <div class="player2 zones">
       <div class="player-info pull-left clearfix">
-      {{>zone graveyard}}
+      {{>zoneViewing graveyard}}
 
-      {{>zone exile}}
+      {{>zoneViewing exile}}
       </div>
-      {{>zone play}}
+      {{>zoneViewing play}}
 
-      {{>zone stack}}
+      {{>zoneViewing stack}}
 
-      {{>zone hand}}
+      {{>zoneViewing hand}}
   </div>
   {{/with}}
 </template>

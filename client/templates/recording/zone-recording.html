@@ -1,0 +1,13 @@
+<template name="zoneRecording">
+  <div class="zone {{name}} pull-left clearfix">
+    <div class="cards {{name}}" data-name="{{name}}">
+      {{#each cards}}
+      <div class="card {{color}}" data-name="{{name}}">
+        <span>{{name}}</span>
+        <img src="{{image}}" alt="{{name}}" />
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</template>
+
