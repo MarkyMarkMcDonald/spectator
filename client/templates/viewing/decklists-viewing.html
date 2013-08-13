@@ -1,25 +1,23 @@
 <template name="decklistsViewing">
   <div class="decklists clearfix">
     <div class="player1 pull-left">
-      {{#with player1}}
-      {{name}}
-      {{>decklistViewing}}
-      {{/with}}
+      {{player1.name}}
+      {{{player1DecklistNav}}}
+      <ul>
+        {{#each player1Decklist}}
+        <li>{{this.quantity}} <a class="card" data-name="{{this.name}}">{{this.name}}</a></li>
+        {{/each}}
+      </ul>
     </div>
 
     <div class="player2 pull-right">
-      {{#with player2}}
-      {{name}}
-      {{>decklistViewing}}
-      {{/with}}
+      {{player2.name}}
+      {{{player2DecklistNav}}}
+      <ul>
+        {{#each player2Decklist}}
+        <li>{{this.quantity}} <a class="card" data-name="{{this.name}}">{{this.name}}</a></li>
+        {{/each}}
+      </ul>
     </div>
   </div>
-</template>
-
-<template name="decklistViewing">
-  <ul>
-    {{#each decklist}}
-    <li>{{this.quantity}} <a class="card" data-name="{{this.name}}">{{this.name}}</a></li>
-    {{/each}}
-  </ul>
 </template>

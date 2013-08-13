@@ -14,7 +14,3 @@ Session.setDefault('hovered-card', {});
 Template.hoveredCard.card = function() {
   return Session.get('hovered-card');
 };
-
-Template.gameViewing.decklistQuery = function(){
-
-};

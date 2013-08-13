@@ -14,6 +14,8 @@ Meteor.Router.add({
 
 Meteor.Router.beforeRouting = function() {
   Session.set('hovered-card', null);
+  Session.set('decklist1Page', 0);
+  Session.set('decklist2Page', 0);
 };
 
 Meteor.Router.filters({

@@ -1,0 +1,13 @@
+.recording-game { height: 100%; }
+.recording-game .board { height: 100%; clear: both; }
+.recording-game .zone { width: 18%; min-height: 100%; }
+.recording-game .zone .cards { min-height: 200px; }
+.recording-game .zone .cards .card { background-color: lightblue; border-radius: 5px; margin: 3px 5px; }
+.recording-game .zone .cards .card img { display: none; }
+.recording-game .zone.play:before { content: "PLAY"; left: 25px; }
+.recording-game .zone.hand:before { content: "HAND"; left: 18px; }
+.recording-game .zone.graveyard:before { content: "GY"; left: 45px; }
+.recording-game .zone.exile:before { content: "EXILE"; left: 19px; }
+.recording-game .zone.stack:before { content: "STACK"; left: 4px; }
+.recording-game .zone.play, .recording-game .zone.hand, .recording-game .zone.graveyard, .recording-game .zone.exile, .recording-game .zone.stack { background-color: darkgrey; margin: 0 1%; position: relative; }
+.recording-game .zone.play:before, .recording-game .zone.hand:before, .recording-game .zone.graveyard:before, .recording-game .zone.exile:before, .recording-game .zone.stack:before { position: absolute; font-size: 50px; color: lightgrey; top: 40%; }

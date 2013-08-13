@@ -38,7 +38,7 @@ var decklistFromString = function(decklist) {
   var lines = decklist.split('\n');
   var cards = [];
   lines.forEach(function(line){
-    if (line) {
+    if (/\w/.test(line)) {
       var name = line.split(/[\s(,\s)(x\s)]+(.+)?/)[1];
       var quantity = line.split(/[\s(,\s)(x\s)]+(.+)?/)[0];
       var card = Meteor.call('getCard', {name: name});

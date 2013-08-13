@@ -1,3 +1,3 @@
-Template.zone.rendered = function(){
-  $('.card').textfill({maxFontPixels: 14});
+Template.zoneViewing.rendered = function(){
+  $('.card').textfill({maxFontPixels: 10});
 };
