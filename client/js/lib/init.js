@@ -1,7 +1,6 @@
 Meteor.subscribe("games");
 
 Meteor.startup(function(){
-  Pagination.style('bootstrap');
 });
 
 findCurrentGame = function(){
