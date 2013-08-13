@@ -18,12 +18,19 @@ $handWidth: $boardWidth - $playerInfoWidth
     width: $boardWidth
     .player1, .player2
       min-width: 210px
+      position: relative
       a:hover
         text-decoration: none
         cursor: pointer
     .prev, .next
       margin: 0 5px
-
+      position: absolute
+    .prev
+      left: 0
+      top: 50%
+    .next
+      left: 95%
+      top: 50%
   .horizontal-divider
     clear: both
     width: 100%

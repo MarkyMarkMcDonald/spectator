@@ -1,9 +1,11 @@
 .selected-game .title { margin: 0 auto; text-align: left; }
 .selected-game ul { list-style: none; }
 .selected-game .decklists { width: 710px; }
-.selected-game .decklists .player1, .selected-game .decklists .player2 { min-width: 210px; }
+.selected-game .decklists .player1, .selected-game .decklists .player2 { min-width: 210px; position: relative; }
 .selected-game .decklists .player1 a:hover, .selected-game .decklists .player2 a:hover { text-decoration: none; cursor: pointer; }
-.selected-game .decklists .prev, .selected-game .decklists .next { margin: 0 5px; }
+.selected-game .decklists .prev, .selected-game .decklists .next { margin: 0 5px; position: absolute; }
+.selected-game .decklists .prev { left: 0; top: 50%; }
+.selected-game .decklists .next { left: 95%; top: 50%; }
 .selected-game .horizontal-divider { clear: both; width: 100%; background-color: darkgrey; height: 1px; }
 .selected-game .hovered-card { width: 250px; height: 350px; }
 .selected-game .hovered-card img { width: 250px; height: 350px; }
