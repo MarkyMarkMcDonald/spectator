@@ -2,6 +2,7 @@
 .selected-game ul { list-style: none; }
 .selected-game .decklists { width: 710px; }
 .selected-game .decklists .player1, .selected-game .decklists .player2 { min-width: 210px; position: relative; }
+.selected-game .decklists .player1 ul, .selected-game .decklists .player2 ul { min-height: 200px; }
 .selected-game .decklists .player1 a:hover, .selected-game .decklists .player2 a:hover { text-decoration: none; cursor: pointer; }
 .selected-game .decklists .prev, .selected-game .decklists .next { margin: 0 5px; position: absolute; }
 .selected-game .decklists .prev { left: 0; top: 50%; }
