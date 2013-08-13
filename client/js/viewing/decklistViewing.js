@@ -9,12 +9,14 @@ var defaultNumPages = 10;
 
 Template.decklistsViewing.player1Decklist= function() {
   var currentPage = Session.get('decklist1Page');
-  return findCurrentGame().player1.decklist.slice(currentPage * defaultNumPages, currentPage * defaultNumPages + defaultNumPages);
+  var sortedDecklist = sortDecklist(findCurrentGame().player1.decklist);
+  return sortedDecklist.slice(currentPage * defaultNumPages, currentPage * defaultNumPages + defaultNumPages);
 };
 
 Template.decklistsViewing.player2Decklist= function(){
   var currentPage = Session.get('decklist2Page');
-  return findCurrentGame().player2.decklist.slice(currentPage * defaultNumPages, currentPage * defaultNumPages + defaultNumPages);
+  var sortedDecklist = sortDecklist(findCurrentGame().player2.decklist);
+  return sortedDecklist.slice(currentPage * defaultNumPages, currentPage * defaultNumPages + defaultNumPages);
 };
 
 Template.decklistsViewing.player1DecklistNav = function() {
