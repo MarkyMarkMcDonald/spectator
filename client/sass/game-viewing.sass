@@ -1,3 +1,11 @@
+$zoneBorderColor: darkgrey
+$boardWidth: 710px
+$boardHeight: 350px
+$cardWidth: 250px
+$stackWidth: 100px
+$playerInfoWidth: 100px
+$handWidth: $boardWidth - $playerInfoWidth
+
 .selected-game
   .title
     margin: 0 auto
@@ -7,8 +15,9 @@
     list-style: none
 
   .decklists
+    width: $boardWidth
     .player1, .player2
-      width: 50%
+      min-width: 210px
       a:hover
         text-decoration: none
         cursor: pointer
@@ -18,14 +27,8 @@
   .horizontal-divider
     clear: both
     width: 100%
-    background-color: black
+    background-color: $zoneBorderColor
     height: 1px
-
-  $boardWidth: 710px
-  $boardHeight: 350px
-  $cardWidth: 250px
-  $stackWidth: 100px
-  $playerInfoWidth: 100px
 
   .hovered-card
     width: $cardWidth
@@ -37,19 +40,33 @@
   .board-state
     width: $boardWidth
 
+  .player1
+    .hand:after
+      position: absolute
+      border-bottom: 1px solid $zoneBorderColor
+      border-left: 1px solid $zoneBorderColor
+      width: $handWidth - 1px
+      height: inherit
+
+  .player2
+    .hand:after
+      position: absolute
+      border-top: 1px solid $zoneBorderColor
+      border-left: 1px solid $zoneBorderColor
+      width: $handWidth - 1px
+      height: inherit
+
   .zones
     .zone
       .card
         /* Font visibility */
         color: white
         text-shadow: -1px 0 1px black, 0 1px 1px black, 1px 0 1px black, 0 -1px 1px black
-        line-height: 15px
+        line-height: 10px
         /* sizing */
         width: 56px
         height: 85px
         margin: 5px 3px
-        /* border */
-        border: 1px solid black
         /* relative positioning */
         float: left
         z-index: 1
@@ -64,13 +81,15 @@
 
       $handHeight: 100px
       &.hand
-        background-color: lightblue
+        position: relative
+        background-color: lightgray
         height: 100px
-        width: $boardWidth - $playerInfoWidth
+        width: $handWidth
         .card
           margin-left: 10px
+
       &.stack
-        background-color: darkred
+        background-color: #ff8e8d
         height: $boardHeight - $handHeight
         width: $stackWidth
         & .card
@@ -99,7 +118,7 @@
       width: $playerInfoWidth
       &:after
         position: absolute
-        border-right: 1px solid black
+        border-right: 1px solid $zoneBorderColor
         width: inherit
         height: inherit
       .zone.graveyard, .zone.exile

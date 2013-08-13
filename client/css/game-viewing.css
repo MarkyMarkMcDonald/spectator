@@ -1,17 +1,20 @@
 .selected-game .title { margin: 0 auto; text-align: left; }
 .selected-game ul { list-style: none; }
-.selected-game .decklists .player1, .selected-game .decklists .player2 { width: 50%; }
+.selected-game .decklists { width: 710px; }
+.selected-game .decklists .player1, .selected-game .decklists .player2 { min-width: 210px; }
 .selected-game .decklists .player1 a:hover, .selected-game .decklists .player2 a:hover { text-decoration: none; cursor: pointer; }
 .selected-game .decklists .prev, .selected-game .decklists .next { margin: 0 5px; }
-.selected-game .horizontal-divider { clear: both; width: 100%; background-color: black; height: 1px; }
+.selected-game .horizontal-divider { clear: both; width: 100%; background-color: darkgrey; height: 1px; }
 .selected-game .hovered-card { width: 250px; height: 350px; }
 .selected-game .hovered-card img { width: 250px; height: 350px; }
 .selected-game .board-state { width: 710px; }
-.selected-game .zones .zone .card { /* Font visibility */ color: white; text-shadow: -1px 0 1px black, 0 1px 1px black, 1px 0 1px black, 0 -1px 1px black; line-height: 15px; /* sizing */ width: 56px; height: 85px; margin: 5px 3px; /* border */ border: 1px solid black; /* relative positioning */ float: left; z-index: 1; position: relative; }
+.selected-game .player1 .hand:after { position: absolute; border-bottom: 1px solid darkgrey; border-left: 1px solid darkgrey; width: 609px; height: inherit; }
+.selected-game .player2 .hand:after { position: absolute; border-top: 1px solid darkgrey; border-left: 1px solid darkgrey; width: 609px; height: inherit; }
+.selected-game .zones .zone .card { /* Font visibility */ color: white; text-shadow: -1px 0 1px black, 0 1px 1px black, 1px 0 1px black, 0 -1px 1px black; line-height: 10px; /* sizing */ width: 56px; height: 85px; margin: 5px 3px; /* relative positioning */ float: left; z-index: 1; position: relative; }
 .selected-game .zones .zone .card img { z-index: -1; position: absolute; width: 56px; height: 85px; top: 0; left: 0; }
-.selected-game .zones .zone.hand { background-color: lightblue; height: 100px; width: 610px; }
+.selected-game .zones .zone.hand { position: relative; background-color: lightgrey; height: 100px; width: 610px; }
 .selected-game .zones .zone.hand .card { margin-left: 10px; }
-.selected-game .zones .zone.stack { background-color: darkred; height: 250px; width: 100px; }
+.selected-game .zones .zone.stack { background-color: #ff8e8d; height: 250px; width: 100px; }
 .selected-game .zones .zone.stack .card { margin-left: 10px; }
 .selected-game .zones .zone.stack .card:nth-child(2) { margin-left: 20px; }
 .selected-game .zones .zone.stack .card:nth-child(3) { margin-left: 30px; }
@@ -21,7 +24,7 @@
 .selected-game .zones .zone.play { background-color: lightgrey; height: 250px; width: 510px; }
 .selected-game .zones .zone.play .card { margin-left: 10px; }
 .selected-game .zones .player-info { position: relative; background-color: lightgrey; height: 350px; width: 100px; }
-.selected-game .zones .player-info:after { position: absolute; border-right: 1px solid black; width: inherit; height: inherit; }
+.selected-game .zones .player-info:after { position: absolute; border-right: 1px solid darkgrey; width: inherit; height: inherit; }
 .selected-game .zones .player-info .zone.graveyard, .selected-game .zones .player-info .zone.exile { height: 175px; width: 100px; }
 .selected-game .zones .player-info .zone.graveyard .card, .selected-game .zones .player-info .zone.exile .card { margin-left: 10px; }
 .selected-game .zones .player-info .zone.graveyard .card:nth-child(2), .selected-game .zones .player-info .zone.exile .card:nth-child(2) { margin-left: 20px; }

@@ -21,7 +21,6 @@ Template.decklistsViewing.player1DecklistNav = function() {
   var html = '';
   var currentPage = Session.get('decklist1Page');
   var maxPages = findCurrentGame().player1.decklist.length / defaultNumPages - 1;
-  console.log("decklist1 max pages " + maxPages);
   if (currentPage > 0) {
     html += '<a class="prev"><</a>';
   }
@@ -35,7 +34,6 @@ Template.decklistsViewing.player2DecklistNav = function() {
   var html = '';
   var currentPage = Session.get('decklist2Page');
   var maxPages = findCurrentGame().player2.decklist.length / defaultNumPages - 1;
-  console.log("decklist2 max pages " + maxPages);
   if (currentPage > 0) {
     html += '<a class="prev"><</a>';
   }
