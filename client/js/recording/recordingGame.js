@@ -51,3 +51,8 @@ Template.gameRecording.rendered = function(){
     });
   })
 };
+
+Template.decklistRecording.decklist = function() {
+  var decklist = this.decklist;
+  return sortDecklist(decklist);
+};
